@@ -136,9 +136,7 @@ void AirConditioner::m_getPowerUsage() {
       if (!status.hasPowerInfo())
         LOG_D(TAG, "Status didn't have power info");  
         return ResponseStatus::RESPONSE_WRONG;
-      LOG_D(TAG, "Status did have power info");  
       if (this->m_powerUsage != status.getPowerUsage()) {
-        LOG_D(TAG, "Updating power usage");  
         this->m_powerUsage = status.getPowerUsage();
         this->sendUpdate();
       }
