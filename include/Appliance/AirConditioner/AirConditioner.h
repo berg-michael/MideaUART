@@ -22,8 +22,10 @@ class AirConditioner : public ApplianceBase {
  public:
   AirConditioner() : ApplianceBase(AIR_CONDITIONER) {}
   void m_setup() override;
-  void m_onIdle() override { this->m_getStatus();
-                      this->m_getPowerUsage(); }
+  void m_onIdle() override { 
+    this->m_getStatus();
+    // this->m_getPowerUsage(); 
+  }
   void control(const Control &control);
   void setPowerState(bool state);
   bool getPowerState() const { return this->m_mode != Mode::MODE_OFF; }
