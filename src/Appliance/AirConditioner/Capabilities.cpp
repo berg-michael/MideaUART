@@ -71,7 +71,6 @@ bool Capabilities::read(const FrameData &frame) {
     return false;
 
   CapabilityData cap(frame);
-  LOG_D(TAG, "Capabilities Frame %s", frame.toString().c_str());
   for (; cap.isValid(); cap.advance()) {
     if (!cap.size())
       continue;
