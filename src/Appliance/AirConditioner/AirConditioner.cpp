@@ -134,6 +134,7 @@ void AirConditioner::m_getPowerUsage() {
     [this](FrameData data) -> ResponseStatus {
       const auto status = data.to<StatusData>();
       if (!status.hasPowerInfo())
+        LOG_D(TAG, "Status didn't have power info");  
         return ResponseStatus::RESPONSE_WRONG;
       if (this->m_powerUsage != status.getPowerUsage()) {
         this->m_powerUsage = status.getPowerUsage();
