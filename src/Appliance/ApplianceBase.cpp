@@ -91,6 +91,7 @@ void ApplianceBase::m_handler(const Frame &frame) {
           this->m_request->onSuccess();
         this->m_destroyRequest();
       } else {
+        LOG_D(TAG, "Handling frame, malformed response?: %s", frame.toString().c_str());
         this->m_resetAttempts();
         this->m_resetTimeout();
       }
