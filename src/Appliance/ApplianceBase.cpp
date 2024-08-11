@@ -75,7 +75,7 @@ void ApplianceBase::loop() {
   LOG_D(TAG, "Getting and sending a request from the queue...");
   this->m_sendRequest(this->m_request);
   if (this->m_request->onData != nullptr) {
-    LOG_D(TAG, "Handling frame, malformed response2?: %s", frame.toString().c_str());
+    LOG_D(TAG, "Handling frame, malformed response2?");
     this->m_resetAttempts();
     this->m_resetTimeout();
   } else {    
