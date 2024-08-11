@@ -13,12 +13,9 @@ static const char *TAG = "ApplianceBase";
 
 ResponseStatus ApplianceBase::Request::callHandler(const Frame &frame) {
   if (!frame.hasType(this->requestType))
-    LOG_D(TAG, "Frame has wrong type?");
     return ResponseStatus::RESPONSE_WRONG;
   if (this->onData == nullptr)
-    LOG_D(TAG, "onData was nullptr");
     return RESPONSE_OK;
-  LOG_D(TAG, "onData was not nullptr");
   return this->onData(frame.getData());
 }
 
@@ -89,16 +86,11 @@ void ApplianceBase::loop() {
 
 void ApplianceBase::m_handler(const Frame &frame) {
   if (this->m_isWaitForResponse()) {
-    LOG_D(TAG, "this->m_isWaitForResponse()");
     auto result = this->m_request->callHandler(frame);
     if (result != RESPONSE_WRONG) {
-      LOG_D(TAG, "result != RESPONSE_WRONG");
       if (result == RESPONSE_OK) {
-        LOG_D(TAG, "result == RESPONSE_OK");
         if (this->m_request->onSuccess != nullptr)
-          LOG_D(TAG, "this->m_request->onSuccess != nullptr");
           this->m_request->onSuccess();
-        // maybe this is where it is made into nullptr
         this->m_destroyRequest();
       } else {
         LOG_D(TAG, "Handling frame, malformed response?: %s", frame.toString().c_str());
