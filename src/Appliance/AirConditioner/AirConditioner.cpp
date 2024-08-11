@@ -174,7 +174,7 @@ void AirConditioner::m_getCapabilities() {
 
 void AirConditioner::m_getStatus() {
   QueryStateData data{};
-  LOG_D(TAG, "Are these changes being seen by PIO Enqueuing a GET_STATUS(0x41) request...");
+  LOG_D(TAG, "WTF, I'm Enqueuing a GET_STATUS(0x41) request...");
   this->m_queueRequest(FrameType::DEVICE_QUERY, std::move(data),
     // onData
     std::bind(&AirConditioner::m_readStatus, this, std::placeholders::_1)
