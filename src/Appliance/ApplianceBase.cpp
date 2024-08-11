@@ -79,7 +79,6 @@ void ApplianceBase::loop() {
     this->m_resetAttempts();
     this->m_resetTimeout();
   } else {    
-    LOG_D(TAG, "Apparently onData was nullptr (?), destroying");
     this->m_destroyRequest();
   }
 }
